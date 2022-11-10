@@ -109,27 +109,28 @@ def detect(protocol, source, src_port, destination, dest_port):
 	f = open('config.txt', 'r')
 	
 	severityLevel = "None"
-
+	
+	data = []
+	
 	for x in f:
 		# ignore comments in config file
 		if "#" not in x:
-		
 			data=x.split(' ')
-			config_proto = data[0]
-			config_source_addr = data[1]
-			config_src_port = data[2]
-			config_dest_addr = data[4]
-			config_dest_port = data[5]
-			severity = data[6]
-		
-
-			if(config_src_port != "any") or (config_dest_port != "any"):
-				if(protocol == config_proto) and (source == config_source_addr) and (src_port == config_src_port) and (destination == config_dest_addr) and (dest_port == config_dest_port):
-					severityLevel = severity.strip()
-			else:
-				if(protocol == config_proto) and (source == config_source_addr) and (destination == config_dest_addr):
-					severityLevel = severity.strip()
-	
+			if(data[0] != '\n'):
+				config_proto = data[0]
+				config_source_addr = data[1]
+				config_src_port = data[2]
+				config_dest_addr = data[4]
+				config_dest_port = data[5]
+				severity = data[6]
+			
+			
+				if(config_src_port != "any") or (config_dest_port != "any"):
+					if(protocol == config_proto) and (source == config_source_addr) and (src_port == config_src_port) and (destination == config_dest_addr) and (dest_port == config_dest_port):
+						severityLevel = severity.strip()
+				else:
+					if(protocol == config_proto) and (source == config_source_addr) and (destination == config_dest_addr):
+						severityLevel = severity.strip()
 	return severityLevel	
 	
 
