@@ -204,7 +204,7 @@ def test_disconnect():
 def displayData(dataArray):
     print("Displaying Data")
     socketio.emit('newnumber', {'data': dataArray}, namespace='/test')
-    socketio.sleep(0.5)
+    socketio.sleep(0.25)
     
 #receieve message from client
 @socketio.on('message', namespace='/test')
