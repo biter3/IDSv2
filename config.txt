@@ -1,0 +1,22 @@
+# comments can be written with a '#' in front
+# protocol source_ip source_port -> dest_ip dest_port severity
+#
+#
+tcp 10.0.2.4 any -> 142.251.10.91 any low
+tcp 10.0.2.4 any -> 74.125.24.136 any medium
+tcp 10.0.2.4 any -> 74.125.24.91 any medium
+tcp 10.0.2.4 any -> 74.125.24.93 any medium
+tcp 10.0.2.4 any -> 74.125.24.190 any low
+tcp 10.0.2.4 any -> 74.125.68.91 any medium
+tcp 10.0.2.4 any -> 74.125.68.136 any low
+tcp 10.0.2.4 any -> 74.125.68.190 any low
+tcp 10.0.2.4 any -> 74.125.68.93 any medium
+tcp 10.0.2.4 any -> 74.125.130.91 any low
+tcp 10.0.2.4 any -> 74.125.200.91 any medium
+tcp 10.0.2.4 any -> 74.125.200.93 any medium
+tcp 10.0.2.4 any -> 142.250.4.190 any low
+tcp 10.0.2.4 any -> 142.250.4.136 any medium
+tcp 10.0.2.4 any -> 142.250.4.91 any low
+tcp 10.0.2.4 any -> 165.21.6.81 any low
+udp 10.0.2.4 any --> 157.240.15.35 any low
+udp 10.0.2.4 any --> 157.240.15.13 any medium
