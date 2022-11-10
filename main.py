@@ -256,34 +256,18 @@ def main():
 			if eth_proto == 8:
 				(version, header_length, ttl, proto, src, target, data) = ipv4_packet(data)
 				
-				'''
-				print(TAB_1 + 'IPv4 Pakcet: ')
-				print(TAB_2 + 'Version: {}, Header Length: {}, TTL: {}'.format(version, header_length, ttl))
-				print(TAB_2 + 'Protocol: {}, Source: {}, Target: {}'.format(proto, src, target))
-				'''
-				
-				
 				# ICMP
 				if proto == 1:
 					icmp_type, code, checksum, data = icmp_packet(data)
 					
 					proto = 'icmp'
 					
-					'''
-					print(TAB_1 + 'ICMP Packet: ')
-					print(TAB_2 + 'Type: {}, Code: {}, Checksum: {}'.format(icmp_type, code, checksum))
-					print(TAB_2 + 'Data:')'''
 					print(format_multi_line(DATA_TAB_3, data))
 					
 					
 					severity = detect(proto, src, src_port, target, dest_port)
 					check_ddos = dos()
-					#rowData = [date_time, src, src_port, target, dest_port, proto, severity, check_ddos, str(data)]
-					
-					#dataArray.append(rowData)
-					#dataArray.insert(0, rowData)
-					
-					#displayData(rowData)
+
 					if check_ddos == "Possible DoS attack detected":
 						severity = 'medium'	
 						
@@ -304,26 +288,13 @@ def main():
 					
 					proto = 'tcp'
 					
-					'''
-					print(TAB_1 + 'TCP Segment:')
-					print(TAB_2 + 'Source Port: {}, Destination Port: {}'.format(src_port, dest_port))
-					print(TAB_2 + 'Sequence: {}, Acknowledgement: {}'.format(sequence, acknowledgement))
-					print(TAB_2 + 'Flags:')
-					print(TAB_3 + 'URG: {}, ACK: {}, PSH: {}, RST: {}, SYN: {}, FIN: {}'.format(flag_urg, flag_ack, flag_psh, flag_rst, flag_syn, flag_fin))
-					print(TAB_2 + 'Data:')'''
 					print(format_multi_line(DATA_TAB_3, data))
-					
-					# *****data*****??
 					
 					
 					severity = detect(proto, src, src_port, target, dest_port)
 					check_ddos = dos()
-					#rowData = [date_time, src, src_port, target, dest_port, proto, severity, check_ddos, str(data)]
 					
-					#dataArray.append(rowData)
-					#dataArray.insert(0, rowData)
-					
-					#displayData(rowData)
+				
 					if check_ddos == "Possible DoS attack detected":
 						severity = 'medium'	
 						
@@ -344,14 +315,9 @@ def main():
 					
 					proto = 'udp'
 					
-					
-					#print(TAB_1 + 'UDP Segment:')
-					#print(TAB_2 + 'Source Port: {}, Destination Port: {}, Length: {}'.format(src_port, dest_port, length))
-					
 					severity = detect(proto, src, src_port, target, dest_port)
 					check_ddos = dos()
 					
-					#displayData(rowData)
 					if check_ddos == "Possible DoS attack detected":
 						severity = 'medium'	
 						
@@ -365,11 +331,6 @@ def main():
 						
 					rowData.append(str(hexdump(data)))
 					displayData(rowData)
-
-			#else:
-				#pass
-				#print('Data:')
-				#print(format_multi_line(DATA_TAB_1, data))
 
 
 if __name__ == '__main__':
